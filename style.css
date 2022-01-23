@@ -1643,6 +1643,13 @@ p.bold{
     position: relative;
     width: 33.33333%;
 }
+.project-item {
+    box-sizing: border-box;
+    padding: 0 2.5px 0px;
+    margin-bottom: 5px;
+    position: relative;
+    width: 50%;
+}
 .gallery_items {
   padding-left: -2.5px;
   padding-right: -2.5px;
