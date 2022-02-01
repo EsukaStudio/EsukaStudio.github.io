@@ -709,7 +709,7 @@ textarea {
    Banner
 *************************/
 .banner-area{
-    background: url(img/banner/banner3.jpg);
+    background: url(img/banner/banner4.jpg);
     background-size: cover;
     background-position: center center;
     background-repeat: no-repeat;
@@ -717,7 +717,17 @@ textarea {
     position: relative;
     z-index: 1;
 }
-.about .banner-area{background: url(img/banner/banner4.jpg)}
+.P1 .banner-area{background: url(img/banner/P1.png)}
+.P2 .banner-area{background: url(img/banner/P2.png)}
+.P3 .banner-area{background: url(img/banner/P3.png)}
+.P4 .banner-area{background: url(img/banner/P4.png)}
+.P5 .banner-area{background: url(img/banner/P5.png)}
+.P6 .banner-area{background: url(img/banner/P6.png)}
+.P7 .banner-area{background: url(img/banner/P7.png)}
+.P8 .banner-area{background: url(img/banner/P8.png)}
+.P9 .banner-area{background: url(img/banner/P9.png)}
+.P10 .banner-area{background: url(img/banner/P10.png)}
+.P11 .banner-area{background: url(img/banner/P11.png)}
 .banner-area:after{
     position: absolute;
     left: 0;
@@ -1632,6 +1642,13 @@ p.bold{
     margin-bottom: 5px;
     position: relative;
     width: 33.33333%;
+}
+.project-item {
+    box-sizing: border-box;
+    padding: 0 2.5px 0px;
+    margin-bottom: 5px;
+    position: relative;
+    width: 50%;
 }
 .gallery_items {
   padding-left: -2.5px;
