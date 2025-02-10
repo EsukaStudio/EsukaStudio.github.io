@@ -717,6 +717,7 @@ textarea {
     position: relative;
     z-index: 1;
 }
+.AnimoXtend .banner-area{background: url(../images/banner/AnimoXtend.png)}
 .P1 .banner-area{background: url(../images/banner/P1.png)}
 .P2 .banner-area{background: url(../images/banner/P2.png)}
 .P3 .banner-area{background: url(../images/banner/P3.png)}
