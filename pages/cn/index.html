@@ -1,4 +1,4 @@
-﻿<!doctype html>
+<!doctype html>
 <html class="no-js" lang="en">
 <head>
 <meta charset="utf-8">
@@ -23,6 +23,45 @@
 <link rel="stylesheet" href="../../assets/css/style.css">
 <link rel="stylesheet" href="../../assets/css/responsive.css">
 <script src="../../assets/js/vendor/modernizr-2.8.3.min.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // 延迟加载视频
+    const videos = document.querySelectorAll('video');
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const video = entry.target;
+                const sources = video.getElementsByTagName('source');
+                for (let source of sources) {
+                    const src = source.dataset.src;
+                    if (src) {
+                        source.src = src;
+                    }
+                }
+                video.load();
+                video.play().catch(function(error) {
+                    console.log("视频播放失败:", error);
+                });
+                observer.unobserve(video);
+            }
+        });
+    });
+    
+    videos.forEach(video => observer.observe(video));
+    
+    videos.forEach(video => {
+        video.addEventListener('ended', function() {
+            video.play();
+        });
+        
+        video.addEventListener('error', function() {
+            console.log("视频错误，尝试重新加载");
+            video.load();
+            video.play();
+        });
+    });
+});
+</script>
 </head>
 <body>
 <!--[if lt IE 8]>
@@ -65,7 +104,10 @@
 <!-- Background Area Start -->
 <section id="slider" class="slider-area">	
 	<div class="slider-wrapper">
-		<div class="single-slide height-100vh" style="background-image: url('../../assets/images/slider/solami_15fps.gif');">
+		<div class="single-slide height-100vh">
+			<video autoplay loop muted playsinline poster="../../assets/images/slider/solami_poster.jpg" class="background-video" preload="auto">
+				<source src="../../assets/videos/SOLAMI.webm" type="video/webm">
+			</video>
 			<div class="slider-content">
 				<div class="text-content-wrapper">
 					<div class="text-content text-center">
@@ -77,7 +119,10 @@
 				</div>
 			</div>
 		</div>
-		<div class="single-slide height-100vh" style="background-image: url('../../assets/images/slider/ax_15fps.gif');">
+		<div class="single-slide height-100vh">
+			<video autoplay loop muted playsinline poster="../../assets/images/slider/ax_poster.jpg" class="background-video" preload="auto">
+				<source src="../../assets/videos/AX.webm" type="video/webm">
+			</video>
 			<div class="slider-content">
 				<div class="text-content-wrapper">
 					<div class="text-content text-center">
@@ -89,7 +134,10 @@
 				</div>
 			</div>
 		</div>
-		<div class="single-slide height-100vh" style="background-image: url('../../assets/images/slider/GIF1.gif');">
+		<div class="single-slide height-100vh">
+			<video autoplay loop muted playsinline poster="../../assets/images/slider/GIF1_poster.jpg" class="background-video" preload="auto">
+				<source src="../../assets/videos/VRSPACE.webm" type="video/webm">
+			</video>
 			<div class="slider-content">
 				<div class="text-content-wrapper">
 					<div class="text-content text-center">
@@ -101,7 +149,10 @@
 				</div>
 			</div>
 		</div>
-		<div class="single-slide height-100vh" style="background-image: url('../../assets/images/slider/GIF2.gif');">
+		<div class="single-slide height-100vh">
+			<video autoplay loop muted playsinline poster="../../assets/images/slider/GIF2_poster.jpg" class="background-video" preload="auto">
+				<source src="../../assets/videos/VRCODING.webm" type="video/webm">
+			</video>
 			<div class="slider-content">
 				<div class="text-content-wrapper">
 					<div class="text-content text-center">
@@ -499,5 +550,17 @@
 <script src="../../assets/js/jquery.magnific-popup.js"></script>  
 <script src="../../assets/js/plugins.js"></script>
 <script src="../../assets/js/main.js"></script>
+
+<!-- Add video styles -->
+<style>
+.background-video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+</style>
 </body>
 </html>
